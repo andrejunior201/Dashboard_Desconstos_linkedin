@@ -9,8 +9,6 @@ import duckdb
 import time
 import pyarrow.parquet as pq
 from datetime import datetime
-from databricks.sql import connect
-from databricks.sdk.core import Config
 from pathlib import Path
 
 
