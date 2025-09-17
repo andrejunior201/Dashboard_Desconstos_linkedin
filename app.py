@@ -1189,23 +1189,30 @@ with aba3:
 
 
     # Mostrar tabela com imagens
-    st.data_editor(
-        df_page,
-        column_config={
-            "link_imagem_produtos": st.column_config.ImageColumn("Foto", help="Imagem do produto", width="small"),
-            "SKU": st.column_config.TextColumn("SKU"),
-            "nome_ajustado": st.column_config.TextColumn("Loja"),
-            "Receita_liquida_total": st.column_config.TextColumn("Receita Liquida Total"),
-            "PVL_total": st.column_config.TextColumn("PVL Total"),
-            "Receita_liquida_unitario": st.column_config.TextColumn("Receita Liquida Unit."),
-            "PVL_unitaria": st.column_config.TextColumn("PVL Unit."),
-            "Perc_Desconto": st.column_config.NumberColumn("% Desconto", format="%.1f%%"),
-            "Volume": st.column_config.NumberColumn("Volume"),
-        },
-        hide_index=True,
-        use_container_width=True,
-        height=500,
+    if df_page.empty:
+        st.info("Nenhum produto encontrado para os filtros selecionados.")
+    else:
+        st.data_editor(
+            df_page,
+            column_config={
+                "link_imagem_produtos": st.column_config.ImageColumn("Foto", help="Imagem do produto", width="small"),
+                "SKU": st.column_config.TextColumn("SKU"),
+                "nome_ajustado": st.column_config.TextColumn("Loja"),
+                "Receita_liquida_total": st.column_config.TextColumn("Receita Liquida Total"),
+                "PVL_total": st.column_config.TextColumn("PVL Total"),
+                "Receita_liquida_unitario": st.column_config.TextColumn("Receita Liquida Unit."),
+                "PVL_unitaria": st.column_config.TextColumn("PVL Unit."),
+                "Perc_Desconto": st.column_config.NumberColumn("% Desconto", format="%.1f%%"),
+                "Volume": st.column_config.NumberColumn("Volume"),
+            },
+            hide_index=True,
+            use_container_width=True,
+            height=500,
     )
+
+
+
+
 
 
 
